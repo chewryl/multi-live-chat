@@ -1,0 +1,28 @@
+$slate: #545666;
+$grey: #444;
+$sea: #429d8c;
+
+body {
+	background: $slate;
+	color: $grey;
+}
+.container {
+	width: 90%;
+	max-width: 960px;
+	margin: 80px auto;
+	border-radius: 3px;
+	box-shadow: 2px 4px 6px rgba(28, 6, 49, 0.1);
+	background: white;
+}
+.error {
+	color: #ff3f80;
+}
+button {
+	text-decoration: none;
+	background: $sea;
+	color: white;
+	font-weight: bold;
+	border: 0;
+	border-radius: 15px;
+	padding: 10px 30px;
+}
