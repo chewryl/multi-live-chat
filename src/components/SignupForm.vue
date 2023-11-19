@@ -3,6 +3,9 @@
 	<input type="text" required placeholder="display name" v-model="displayName">
 	<input type="email" required placeholder="email address" v-model="email">
 	<input type="password" required placeholder="password" v-model="password">
+	<div v-if="error" class="error">
+		{{ error }}
+	</div>
 	<button>Sign up</button>
  </form>
 </template>
@@ -27,7 +30,8 @@ export default {
 			displayName,
 			email,
 			password,
-			handleSubmit
+			handleSubmit,
+			error
 		}
 	}
 }
