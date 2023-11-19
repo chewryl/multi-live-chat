@@ -10,7 +10,7 @@
 <script>
 import { ref } from 'vue'
 
-	export default {
+export default {
 	setup () {
 		const displayName = ref('')
 		const email = ref('')
