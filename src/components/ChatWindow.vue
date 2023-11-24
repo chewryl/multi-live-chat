@@ -2,8 +2,8 @@
 	<div class="chat-window">
 		<div v-if="error">{{ error }}</div>
 		<div v-if="docs" class="messages">
-			<div v-for="doc in messagesWithUserColor" :key="doc.id" class="single-message">
-				<span class="created-at">{{ doc.createdAt.toDate() }}</span>
+			<div v-for="doc in formattedDocsWithUserColor" :key="doc.id" class="single-message">
+				<span class="created-at">{{ doc.createdAt }} ago</span>
 				<span class="user" :style="{'color': doc.color}">{{ doc.user }}</span>
 				<span class="message">{{ doc.message }}</span>
 			</div>
@@ -14,25 +14,28 @@
 <script>
 import getCollection from '@/composables/getCollection';
 import { computed } from 'vue';
+import { formatDistanceToNow } from 'date-fns'
 
 export default {
 	setup () {
 		const { docs, error } = getCollection('messages')
 		let usernameColor = []
 
-		const messagesWithUserColor = computed(() => {
-			docs.value.forEach(doc => {
-				if (!usernameColor.includes(doc.user)) {
-					usernameColor.push({ user: doc.user, color: generateRandomColor() })
-				}
-			})
-			let messagesWithUserColor = docs.value.map(doc => {
-				let color = usernameColor.find(u => u.user === doc.user).color
-				return { ...doc, color }
-			})
-			return messagesWithUserColor.sort((x, y) => {
-				return x.createdAt - y.createdAt
-			})
+		const formattedDocsWithUserColor = computed(() => {
+			if (docs) {
+				docs.value.forEach(doc => {
+					if (!usernameColor.includes(doc.user)) {
+						usernameColor.push({ user: doc.user, color: generateRandomColor() })
+					}
+				})
+				return docs.value.map(doc => {
+					let color = usernameColor.find(u => u.user === doc.user).color
+					let time = formatDistanceToNow(doc.createdAt.toDate())
+					return { ...doc, createdAt: time, color }
+				}).sort((x, y) => {
+					return x.createdAt - y.createdAt
+				})
+			}
 		})
 
 		const generateRandomColor = () => {
@@ -42,7 +45,7 @@ export default {
 		return {
 			docs,
 			error,
-			messagesWithUserColor
+			formattedDocsWithUserColor
 		}
 	}
 }
@@ -60,7 +63,7 @@ export default {
 	display: block;
 	color: #999;
 	font-size: 12px;
-	margin-bottom: 4px;
+	margin-bottom: px;
 }
 .user {
 	font-weight: bold;
