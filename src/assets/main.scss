@@ -40,4 +40,39 @@ button {
 	&:hover {
 		background: $sea-dark;
 	}
+
+	&:disabled {
+		background: #bdbdbd;
+		cursor: not-allowed;
+	}
+}
+.home {
+	text-align: center;
+	padding: 20px 0;
+	form {
+		width: 300px;
+		margin: 20px auto;
+	}
+	label {
+		display: block;
+		margin: 20px 0 10px;
+	}
+	input {
+		width: 100%;
+		padding: 10px;
+		border-radius: 3px;
+		border: 1px solid #eee;
+		outline: none;
+		color: $slate;
+		margin: 10px auto;
+	}
+	span {
+		font-weight: bold;
+		text-decoration: underline;
+		cursor: pointer;
+		color: $sea;
+	}
+	button {
+		margin: 20px auto;
+	}
 }

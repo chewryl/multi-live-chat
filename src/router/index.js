@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import ChatRoomView from '../views/ChatRoomView.vue'
+import TopicView from '../views/TopicView.vue'
 import { projectAuth } from '@/firebase/config'
 
 // auth guard
@@ -17,7 +18,7 @@ const requireAuth = (to, from, next) => {
 const requireNoAuth = (to, from, next) => {
 	let user = projectAuth.currentUser
 	if (user) {
-		next({ name: 'chatroom' })
+		next({ name: 'topic' })
 	} else {
 		next()
 	}
@@ -31,9 +32,16 @@ const routes = [
 		beforeEnter: requireNoAuth
   },
   {
-    path: '/chatroom',
+    path: '/topic',
+    name: 'topic',
+		component: TopicView,
+		beforeEnter: requireAuth
+  },
+  {
+    path: '/chatroom/:topic',
     name: 'chatroom',
 		component: ChatRoomView,
+		props: true,
 		beforeEnter: requireAuth
   }
 ]

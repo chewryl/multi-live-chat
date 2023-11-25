@@ -17,7 +17,8 @@ import { computed, onUpdated, ref } from 'vue';
 import { formatDistanceToNow } from 'date-fns'
 
 export default {
-	setup () {
+	props: ['topic'],
+	setup (props) {
 		const { docs, error } = getCollection('messages')
 		let usernameColor = []
 

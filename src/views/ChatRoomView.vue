@@ -1,7 +1,7 @@
 <template>
 	<div class="container">
 		<Navbar />
-		<ChatWindow />
+		<ChatWindow :topic="topic" />
 		<NewChatForm />
 	</div>
 </template>
@@ -9,7 +9,7 @@
 import Navbar from '@/components/Navbar.vue';
 import getUser from '@/composables/getUser';
 import { watch } from 'vue';
-import { useRouter } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router';
 import NewChatForm from '@/components/NewChatForm.vue';
 import ChatWindow from '@/components/ChatWindow.vue';
 
@@ -22,6 +22,7 @@ export default {
 	setup () {
 		const { user } = getUser()
 		const router = useRouter()
+		const route = useRoute()
 
 		watch(user, newState => {
 			// user has logged out
@@ -29,6 +30,10 @@ export default {
 				router.push({ name: 'home' })
 			}
 		})
+
+		const topic = route.params.topic
+
+		return { topic }
 	}
 }
 </script>
