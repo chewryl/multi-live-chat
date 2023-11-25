@@ -14,11 +14,21 @@ const requireAuth = (to, from, next) => {
 	}
 }
 
+const requireNoAuth = (to, from, next) => {
+	let user = projectAuth.currentUser
+	if (user) {
+		next({ name: 'chatroom' })
+	} else {
+		next()
+	}
+}
+
 const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView
+		component: HomeView,
+		beforeEnter: requireNoAuth
   },
   {
     path: '/chatroom',
