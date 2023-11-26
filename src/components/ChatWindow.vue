@@ -12,14 +12,14 @@
 </template>
 
 <script>
-import getCollection from '@/composables/getCollection';
+import getCollectionByTopic from '@/composables/getCollectionByTopic';
 import { computed, onUpdated, ref } from 'vue';
 import { formatDistanceToNow } from 'date-fns'
 
 export default {
 	props: ['topic'],
 	setup (props) {
-		const { docs, error } = getCollection('messages')
+		const { docs, error } = getCollectionByTopic('messages', props.topic)
 		let usernameColor = []
 
 		const formattedDocsWithUserColor = computed(() => {

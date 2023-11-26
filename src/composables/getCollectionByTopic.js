@@ -1,11 +1,12 @@
 import { projectFirestore } from "@/firebase/config"
 import { ref, watchEffect } from "vue"
 
-const getCollection = (collection) => {
+const getCollectionByTopic = (collection, topic) => {
 	const docs = ref(null)
 	const error = ref(null)
 
 	let collectionRef = projectFirestore.collection(collection)
+		.where('topic', '==', topic)
 		.orderBy('createdAt')
 
 	const unsub = collectionRef.onSnapshot(snap => {
@@ -30,4 +31,4 @@ const getCollection = (collection) => {
 	return { docs, error }
 }
 
-export default getCollection
+export default getCollectionByTopic
