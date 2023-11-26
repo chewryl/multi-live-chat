@@ -7,7 +7,7 @@
 					<p>Change topic</p>
 				</div>
 			</router-link>
-			<p>Welcome {{ user.displayName }}</p>
+			<h5>Welcome {{ user.displayName }}</h5>
 			<p class="email">logged in as {{ user.email }}</p>
 		</div>
 		<button @click="handleClick">Logout</button>
@@ -44,10 +44,10 @@ nav {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	p {
+	h5, p {
 		margin: 2px auto;
 		font-size: 16px;
-		color: #444;
+		color: #777777;
 	}
 	p.email {
 		font-size: 14px;
@@ -66,6 +66,9 @@ nav {
 		font-size: 14px;
 		color: #999;
 		margin: 0 4px 0;
+	}
+	&:hover * {
+		color: #777
 	}
 }
 </style>

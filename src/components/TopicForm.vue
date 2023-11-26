@@ -1,6 +1,7 @@
 <template>
 	<form @submit.prevent="handleSubmit">
-	<input type="text" required placeholder="enter topic to chat about" v-model="topic">
+		<input type="text" required placeholder="enter topic to chat about" v-model="topic">
+		<p>Try to keep the topic  simple (e.g, name of a film)</p>
 	<button :disabled="canSubmit">Enter {{ formattedTopic }} chat room</button>
  </form>
 </template>
@@ -29,3 +30,8 @@ export default {
 	}
 }
 </script>
+<style scoped>
+p {
+	font-size: 12px;
+}
+</style>

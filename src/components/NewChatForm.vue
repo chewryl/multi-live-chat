@@ -60,5 +60,7 @@ textarea {
 	border-radius: 20px;
 	font-family: inherit;
 	outline: none;
+	background: var(--container-color);
+	color: var(--text-color)
 }
 </style>

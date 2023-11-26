@@ -62,7 +62,7 @@ export default {
 
 <style lang="scss">
 .chat-window {
-	background: #fafafa;
+	background: var(--container-color);
 	padding: 30px 20px;
 }
 .single-message {
@@ -79,7 +79,7 @@ export default {
 	margin-right: 6px;
 }
 .messages {
-	max-height: 400px;
+	max-height: 60vh;
 	overflow: auto;
 }
 </style>
