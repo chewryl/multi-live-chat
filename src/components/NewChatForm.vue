@@ -16,7 +16,8 @@ import getUser from '@/composables/getUser';
 import useCollection from '@/composables/useCollection'
 
 export default {
-	setup () {
+	props: ['topic'],
+	setup (props) {
 		const { user } = getUser()
 		const { addDoc, error } = useCollection('messages')
 
@@ -26,6 +27,7 @@ export default {
 			const chat = {
 				message: message.value,
 				user: user.value.displayName,
+				topic: props.topic,
 				createdAt: timestamp()
 			}
 

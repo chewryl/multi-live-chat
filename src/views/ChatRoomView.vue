@@ -2,7 +2,7 @@
 	<div class="container">
 		<Navbar />
 		<ChatWindow :topic="topic" />
-		<NewChatForm />
+		<NewChatForm :topic="topic"/>
 	</div>
 </template>
 <script>
