@@ -1,7 +1,7 @@
 <template>
 	<form @submit.prevent="handleSubmit">
 	<input type="text" required placeholder="enter topic to chat about" v-model="topic">
-	<button :disabled="canSubmit">Enter {{ topicHyphenated }} chat room</button>
+	<button :disabled="canSubmit">Enter {{ formattedTopic }} chat room</button>
  </form>
 </template>
 
@@ -12,17 +12,17 @@ export default {
 	setup (props, context) {
 
 		const topic = ref('')
-		const topicHyphenated = computed(() => topic.value.replace(' ', '-'))
+		const formattedTopic = computed(() => topic.value.replace(/ /g, '-').toLowerCase())
 
 		const canSubmit = computed(() => !Boolean(topic.value))
 
 		const handleSubmit = () => {
-			context.emit('submitTopic', topicHyphenated.value)
+			context.emit('submitTopic', formattedTopic.value)
 		}
 
 		return {
 			topic,
-			topicHyphenated,
+			formattedTopic,
 			canSubmit,
 			handleSubmit
 		}
