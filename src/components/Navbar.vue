@@ -1,6 +1,12 @@
 <template>
 	<nav v-if="user">
 		<div>
+			<router-link :to="{ name: 'topic' }">
+				<div class="back-section">
+					<span class="material-icons">keyboard_backspace</span>
+					<p>Change topic</p>
+				</div>
+			</router-link>
 			<p>Welcome {{ user.displayName }}</p>
 			<p class="email">logged in as {{ user.email }}</p>
 		</div>
@@ -46,6 +52,20 @@ nav {
 	p.email {
 		font-size: 14px;
 		color: #999;
+	}
+	a {
+		text-decoration: none;
+	}
+}
+.back-section {
+	display: flex;
+	align-items: center;
+	margin: 0 auto 15px auto;
+
+	p {
+		font-size: 14px;
+		color: #999;
+		margin: 0 4px 0;
 	}
 }
 </style>
