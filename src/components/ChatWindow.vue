@@ -47,7 +47,9 @@ export default {
 		const messages = ref(null)
 
 		onUpdated(() => {
-			messages.value.scrollTop = messages.value.scrollHeight
+			if (messages.length) {
+				messages.value.scrollTop = messages.value.scrollHeight
+			}
 		})
 
 		return {
