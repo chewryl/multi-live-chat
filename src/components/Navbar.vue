@@ -1,6 +1,7 @@
 <template>
 	<nav v-if="user">
 		<div>
+			<h5 class="topic">#{{ topic }}</h5>
 			<router-link :to="{ name: 'topic' }">
 				<div class="back-section">
 					<span class="material-icons">keyboard_backspace</span>
@@ -18,9 +19,11 @@ import useLogout from '@/composables/useLogout'
 import getUser from '@/composables/getUser'
 
 export default {
-	setup () {
+	props: ['topic'],
+	setup (props) {
 		const { logout, error } = useLogout()
 		const { user } = getUser()
+		let topic = props.topic
 
 		const handleClick = async () => {
 			await logout()
@@ -32,7 +35,8 @@ export default {
 		return {
 			handleClick,
 			error,
-			user
+			user,
+			topic
 		}
 	}
 }
@@ -44,9 +48,14 @@ nav {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	.topic {
+		margin: 0 auto 2px auto;
+		font-size: 20px;
+		color: #777777;
+	}
 	h5, p {
 		margin: 2px auto;
-		font-size: 16px;
+		font-size: 14px;
 		color: #777777;
 	}
 	p.email {
