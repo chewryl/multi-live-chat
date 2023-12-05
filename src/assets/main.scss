@@ -17,7 +17,7 @@ $punch: #ff1160;
 }
 
 [data-theme="light"] {
-  --background-color: #f3f3f3;
+  --background-color: #fbfbfb;
   --text-color: #525252;
 	--container-color : #fdfdfd;
 }
@@ -30,7 +30,7 @@ body {
 	width: 95%;
 	margin: 2rem auto;
 	border-radius: 4px;
-	box-shadow: 2px 4px 6px rgba(28, 6, 49, 0.1);
+	box-shadow: 2px 4px 6px rgb(28 6 39 / 2%);
 	background: var(--container-color);
 	color: var(--text-color);
 }

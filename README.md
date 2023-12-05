@@ -1,4 +1,8 @@
-# live-chat
+# Start Live Chats Based on a Topic
+Built using Vue 3, Firestore & Firebase Auth.
+
+## Live website
+[Chat About Any Topic](https://vue-firebase-sites-abc83.web.app/)
 
 ## Project setup
 ```
